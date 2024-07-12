@@ -71,10 +71,10 @@ ${HIDDEN_MARKER_END}
   return jiraDetailsMessage + oldBody;
 };
 
-export const buildPRDescription = (details: JIRADetails) => {
-  const displayKey = details.key.toUpperCase();
-  return `<table><tbody><tr><td>
-  <a href="${details.url}" title="${displayKey}" target="_blank"><img alt="${details.type.name}" src="${details.type.icon}" /> ${displayKey}</a>
-  ${details.summary}
-</td></tr></tbody></table><br />`;
+export const buildPRDescription = (issues: JIRADetails[]) => {
+  return issues
+    .map((issue) => {
+      return `- [ ] [${issue.key}](https://axelspringer.atlassian.net/browse/${issue.key}) ${issue.summary}`;
+    })
+    .join('\n');
 };

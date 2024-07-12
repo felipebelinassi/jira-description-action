@@ -29,7 +29,7 @@ async function run(): Promise<void> {
 
     const details = await jiraConnector.getSprintDetails(key);
     console.log(details);
-    // await githubConnector.updatePrDetails(details);
+    await githubConnector.updatePrDetails(details);
 
     setOutputs(key, source);
   } catch (error) {

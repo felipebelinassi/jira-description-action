@@ -73,7 +73,7 @@ export class GithubConnector {
       : getJIRAIssueKeyByDefaultRegexp(stringToParse);
   }
 
-  async updatePrDetails(details: JIRADetails) {
+  async updatePrDetails(details: JIRADetails[]) {
     const owner = this.githubData.owner;
     const repo = this.githubData.repository.name;
     console.log('Updating PR details');
