@@ -101,7 +101,7 @@ export class JiraConnector {
 
   async getSprintIssues(id: string): Promise<JIRA.Sprint> {
     const jql = encodeURI(`sprint = ${id} and issuetype NOT IN ("Technical task")`);
-    const url = `/search?jql=${jql}&fields=summary,issuetype`;
+    const url = `/search?jql=${jql}&fields=summary,issuetype,project`;
     const response = await this.client.get<JIRA.Sprint>(url);
     return response.data;
   }
