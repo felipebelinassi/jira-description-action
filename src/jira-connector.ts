@@ -100,7 +100,7 @@ export class JiraConnector {
   }
 
   async getSprintIssues(id: string): Promise<JIRA.Sprint> {
-    const url = `/sprint/${id}/issue?fields=summary,issuetype`;
+    const url = `/search?jql=sprint%20%3D%20%${id}%20and%20issuetype%20NOT%20IN%20(%22Technical%20task%22)&fields=summary,issuetype`;
     const response = await this.client.get<JIRA.Sprint>(url);
     return response.data;
   }
